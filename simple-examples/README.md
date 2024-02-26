@@ -52,7 +52,7 @@ The project includes a variety of basic workflows to demonstrate Hatchet's core 
 2. **[Concurrency Limit Workflow](./concurrency/concurrency-worker.ts)**: Shows how to manage concurrency limits within workflows to ensure that only a certain number of instances run simultaneously.
 3. **[Directed Acyclic Graph (DAG) Workflow](./dag-worker.ts)**: Illustrates setting up workflows with dependencies that form a Directed Acyclic Graph, demonstrating the advanced orchestration capabilities of Hatchet.
 4. **[Manual Trigger Workflow](./manual-trigger.ts)**: Explains how to initiate workflows manually, offering control over workflow execution triggers.
-5. **[TimeouRetriest Workflow](./retries-worker.py)**: Demonstrates handling retries scenarios within workflows, ensuring that failed or stalled processes are appropriately managed.
+5. **[Retries Workflow](./retries-worker.py)**: Demonstrates handling retries scenarios within workflows, ensuring that failed or stalled processes are appropriately managed.
 
 #### Generative AI Workflows (Coming Soon)
 
