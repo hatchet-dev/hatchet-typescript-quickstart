@@ -6,8 +6,7 @@ This is an example project demonstrating how to use Hatchet with Python.
 
 Before running this project, make sure you have the following:
 
-1. Python 3.7 or higher installed on your machine.
-2. Poetry package manager installed. You can install it by running `pip install poetry`, or by following instructions in the [Poetry Docs](https://python-poetry.org/docs/#installation)
+1. [Node V16 or higher](https://nodejs.org/en/download)
 
 ## Setup
 
@@ -43,7 +42,7 @@ Follow the instructions in the root [project setup](../README.md) to launch the 
 
 ### Example Workflows
 
-The project contains example workflows in the [`./src`](./src) directory. These workflows are registered with hatchet in [`./src/main.py`](./src/main.py) which is started when running `poetry run hatchet`.
+The project contains example workflows in the [`./src`](./src) directory. These workflows are registered with hatchet in [`./src/main.py`](./src/*-worker.ts) which is started when running `poetry run hatchet`.
 
 #### Super Simple Workflows
 
