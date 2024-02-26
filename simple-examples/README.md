@@ -42,25 +42,25 @@ Follow the instructions in the root [project setup](../README.md) to launch the 
 
 ### Example Workflows
 
-The project contains example workflows in the [`./src`](./src) directory. These workflows are registered with hatchet in [`./src/main.py`](./src/*-worker.ts) which is started when running `poetry run hatchet`.
+The project contains example workflows in the [`./src`](./src) directory. See `./package-json` for available scripts to run workers.
 
 #### Super Simple Workflows
 
 The project includes a variety of basic workflows to demonstrate Hatchet's core capabilities, each showcasing different features:
 
-1. **[Simple Workflow](./src/simple/worker.py)**: Demonstrates a straightforward process flow, showcasing the basics of setting up a workflow in Hatchet.
-2. **[Concurrency Limit Workflow](./src/concurrency_limit/worker.py)**: Shows how to manage concurrency limits within workflows to ensure that only a certain number of instances run simultaneously.
-3. **[Directed Acyclic Graph (DAG) Workflow](./src/dag/worker.py)**: Illustrates setting up workflows with dependencies that form a Directed Acyclic Graph, demonstrating the advanced orchestration capabilities of Hatchet.
-4. **[Manual Trigger Workflow](./src/manual_trigger/worker.py)**: Explains how to initiate workflows manually, offering control over workflow execution triggers.
-5. **[Timeout Workflow](./src/timeout/worker.py)**: Demonstrates handling timeout scenarios within workflows, ensuring that long-running or stalled processes are appropriately managed.
+1. **[Simple Workflow](./simple-worker.ts)**: Demonstrates a straightforward process flow, showcasing the basics of setting up a workflow in Hatchet.
+2. **[Concurrency Limit Workflow](./concurrency/concurrency-worker.ts)**: Shows how to manage concurrency limits within workflows to ensure that only a certain number of instances run simultaneously.
+3. **[Directed Acyclic Graph (DAG) Workflow](./dag-worker.ts)**: Illustrates setting up workflows with dependencies that form a Directed Acyclic Graph, demonstrating the advanced orchestration capabilities of Hatchet.
+4. **[Manual Trigger Workflow](./manual-trigger.ts)**: Explains how to initiate workflows manually, offering control over workflow execution triggers.
+5. **[TimeouRetriest Workflow](./retries-worker.py)**: Demonstrates handling retries scenarios within workflows, ensuring that failed or stalled processes are appropriately managed.
 
-#### Generative AI Workflows
+#### Generative AI Workflows (Coming Soon)
 
 For more complex use cases, the project includes examples that integrate with OpenAI's API for generative tasks:
 
-1. **[Simple Response Generation](./src/genai/simple.py)**: A single-step workflow that makes a request to OpenAI, showcasing how to incorporate AI services into Hatchet workflows.
-2. **[Basic Retrieval Augmented Generation (BasicRag)](./src/genai/basicrag.py)**: A multi-step workflow that involves loading website content with Beautiful Soup, reasoning about the information, and generating a response with OpenAI, demonstrating the potential for complex, AI-driven processes.
+1. **[Simple Response Generation]()**: A single-step workflow that makes a request to OpenAI, showcasing how to incorporate AI services into Hatchet workflows.
+2. **[Basic Retrieval Augmented Generation (BasicRag)]()**: A multi-step workflow that involves loading website content, reasoning about the information, and generating a response with OpenAI, demonstrating the potential for complex, AI-driven processes.
 
-### Exposing the workflows via a RestAPI
+<!-- ### Exposing the workflows via a RestAPI
 
-For a more complete example of how you might use Hatchet as part of a deployed production service, check out the [FastAPI Example](../fast-api-react/README.md)
+For a more complete example of how you might use Hatchet as part of a deployed production service, check out the [FastAPI Example](../fast-api-react/README.md) -->
