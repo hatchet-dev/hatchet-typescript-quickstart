@@ -32,11 +32,19 @@ OPENAI_API_KEY="<openai-key>" # (OPTIONAL) only required to run examples in [./s
 
 ### Running an example
 
-In a separate terminal, start a Hatchet worker by running the following command:
+First, start a Hatchet worker by running the following command:
 
 ```shell
 npm run worker:simple
 ```
+
+To send an example event, open a new terminal and run the following command:
+
+```shell
+npm run example:event
+```
+
+Check [all example workflows](#all-simple-workflows) below.
 
 ## Triggering a workflow
 
@@ -48,15 +56,21 @@ Follow the instructions in the root [project setup](../README.md) to launch the 
 
 The project contains example workflows in the [`./src`](./src) directory. See `./package.json` for available scripts to run workers.
 
-#### Super Simple Workflows
+#### All Simple Workflows
 
 The project includes a variety of basic workflows to demonstrate Hatchet's core capabilities, each showcasing different features:
 
-1. **[Simple Workflow](src/simple-worker.ts)**: Demonstrates a straightforward process flow, showcasing the basics of setting up a workflow in Hatchet.
-2. **[Concurrency Limit Workflow](./src/concurrency/concurrency-worker.ts)**: Shows how to manage concurrency limits within workflows to ensure that only a certain number of instances run simultaneously.
-3. **[Directed Acyclic Graph (DAG) Workflow](src/dag-worker.ts)**: Illustrates setting up workflows with dependencies that form a Directed Acyclic Graph, demonstrating the advanced orchestration capabilities of Hatchet.
-4. **[Manual Trigger Workflow](src/manual-trigger.ts)**: Explains how to initiate workflows manually, offering control over workflow execution triggers.
-5. **[Retries Workflow](./src/retries-worker.ts)**: Demonstrates handling retries scenarios within workflows, ensuring that failed or stalled processes are appropriately managed.
+1. **[Simple Workflow](src/simple-worker.ts)**: Demonstrates a straightforward process flow, showcasing the basics of setting up a workflow in Hatchet. `npm run worker:simple`
+2. **[Concurrency Limit Workflow](./src/concurrency/concurrency-worker.ts)**: Shows how to manage concurrency limits within workflows to ensure that only a certain number of instances run simultaneously. `npm run worker:concurrency`
+3. **[Directed Acyclic Graph (DAG) Workflow](src/dag-worker.ts)**: Illustrates setting up workflows with dependencies that form a Directed Acyclic Graph, demonstrating the advanced orchestration capabilities of Hatchet. `npm run worker:dag`
+4. **[Manual Trigger Workflow](src/manual-trigger.ts)**: Explains how to initiate workflows manually, offering control over workflow execution triggers. `npm run worker:manual-trigger`
+5. **[Retries Workflow](./src/retries-worker.ts)**: Demonstrates handling retries scenarios within workflows, ensuring that failed or stalled processes are appropriately managed. `npm run worker:retries`
+
+To send an example event, open a new terminal and run the following command:
+
+```shell
+npm run example:event
+```
 
 #### Generative AI Workflows (Coming Soon)
 
