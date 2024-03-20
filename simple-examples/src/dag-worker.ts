@@ -1,7 +1,7 @@
-import Hatchet, { Workflow } from "@hatchet-dev/typescript-sdk";
+import Hatchet, { Workflow } from '@hatchet-dev/typescript-sdk';
 
 const hatchet = Hatchet.init({
-  log_level: "OFF",
+  log_level: 'OFF',
 });
 
 const sleep = (ms: number) =>
@@ -10,49 +10,49 @@ const sleep = (ms: number) =>
   });
 
 const workflow: Workflow = {
-  id: "dag-example",
-  description: "test",
+  id: 'dag-example',
+  description: 'test',
   on: {
-    event: "user:create",
+    event: 'user:create',
   },
   steps: [
     {
-      name: "dag-step1",
+      name: 'dag-step1',
       run: async (ctx) => {
-        console.log("executed step1!");
+        console.log('executed step1!');
         await sleep(5000);
-        return { step1: "step1" };
+        return { step1: 'step1' };
       },
     },
     {
-      name: "dag-step2",
-      parents: ["dag-step1"],
+      name: 'dag-step2',
+      parents: ['dag-step1'],
       run: (ctx) => {
-        console.log("executed step2!");
-        return { step2: "step2" };
+        console.log('executed step2!');
+        return { step2: 'step2' };
       },
     },
     {
-      name: "dag-step3",
-      parents: ["dag-step1", "dag-step2"],
+      name: 'dag-step3',
+      parents: ['dag-step1', 'dag-step2'],
       run: (ctx) => {
-        console.log("executed step3!");
-        return { step3: "step3" };
+        console.log('executed step3!');
+        return { step3: 'step3' };
       },
     },
     {
-      name: "dag-step4",
-      parents: ["dag-step1", "dag-step3"],
+      name: 'dag-step4',
+      parents: ['dag-step1', 'dag-step3'],
       run: (ctx) => {
-        console.log("executed step4!");
-        return { step4: "step4" };
+        console.log('executed step4!');
+        return { step4: 'step4' };
       },
     },
   ],
 };
 
 async function main() {
-  const worker = await hatchet.worker("example-worker");
+  const worker = await hatchet.worker('example-worker');
   await worker.registerWorkflow(workflow);
   worker.start();
 }
