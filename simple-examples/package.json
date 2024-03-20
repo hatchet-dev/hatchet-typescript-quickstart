@@ -14,8 +14,7 @@
     "url": "https://github.com/hatchet-dev/hatchet-typescrpt-quickstart.git"
   },
   "scripts": {
-    "tsc:build": "tsc && resolve-tspaths",
-    "generate": "./generate-protoc.sh",
+    "build": "tsc && resolve-tspaths",
     "exec": "npx dotenv -- ts-node -r tsconfig-paths/register --project tsconfig.json",
     "example:event": "npm run exec -- src/example-event.ts",
     "example:event-listen": "npm run exec -- src/example-event-with-results.ts",
