@@ -1,6 +1,6 @@
-# Hatchet Simple Examples
+# Hatchet Child Workflows Examples
 
-This is an example project demonstrating how to use Hatchet with Python.
+This is an example project demonstrating how to use Hatchet with Typescript using advanced Child Workflow Spawning. This example spawns multiple workflows for each document present in a specified directory.
 
 ## Prerequisites
 
@@ -10,18 +10,18 @@ Before running this project, make sure you have the following:
 
 ## Setup
 
-1. Create a `.env` file in the `./simple-examples` directory and set the required environment variables. This requires the `HATCHET_CLIENT_TOKEN` variable created in the [Getting Started README](../README.md). If you would like to try the Generative AI examples in [./src/genai](./src/genai) You will also need, a `OPENAI_API_KEY` which can be created on the [OpenAI Website](https://help.openai.com/en/articles/4936850-where-do-i-find-my-openai-api-key).
+1. Create a `.env` file in the `./child-workflows` directory and set the required environment variables. This requires the `HATCHET_CLIENT_TOKEN` variable created in the [Getting Started README](../README.md). If you would like to try the Generative AI examples in [./src/genai](./src/genai) You will also need, a `OPENAI_API_KEY` which can be created on the [OpenAI Website](https://help.openai.com/en/articles/4936850-where-do-i-find-my-openai-api-key).
 
 ```
 HATCHET_CLIENT_TLS_STRATEGY=none
 HATCHET_CLIENT_TOKEN="<token>"
-OPENAI_API_KEY="<openai-key>" # (OPTIONAL) only required to run examples in [./src/genai](./src/genai)
+OPENAI_API_KEY="<openai-key>" 
 ```
 
-2. Open a terminal and navigate to the project root directory (`/simple-examples`):
+2. Open a terminal and navigate to the project root directory (`/child-workflows`):
 
    ```shell
-   cd simple-examples
+   cd child-workflows
    ```
 
 3. Run the following command to install the project dependencies:
@@ -35,50 +35,15 @@ OPENAI_API_KEY="<openai-key>" # (OPTIONAL) only required to run examples in [./s
 First, start a Hatchet worker by running the following command:
 
 ```shell
-npm run worker:simple
+npm run worker:fanout
 ```
 
-To send an example event, open a new terminal and run the following command:
+To send an example event, open the Hatchet dashboard, navigate to the `process-plan-work` and click `Trigger Event` with an empty json object.
 
-```shell
-npm run example:event
+You can also try a search by navigating to the `search-paragraphs` workflow and triggering the workflow with the following json:
+
+```json copy
+{
+   "text": "<your search term>"
+}
 ```
-
-Check [all example workflows](#all-simple-workflows) below.
-
-## Triggering a workflow
-
-Follow the instructions in the root [project setup](../README.md) to launch the playground and start workflow runs.
-
-## Project Overview
-
-### Example Workflows
-
-The project contains example workflows in the [`./src`](./src) directory. See `./package.json` for available scripts to run workers.
-
-#### All Simple Workflows
-
-The project includes a variety of basic workflows to demonstrate Hatchet's core capabilities, each showcasing different features:
-
-1. **[Simple Workflow](src/simple-worker.ts)**: Demonstrates a straightforward process flow, showcasing the basics of setting up a workflow in Hatchet. `npm run worker:simple`
-2. **[Concurrency Limit Workflow](./src/concurrency/concurrency-worker.ts)**: Shows how to manage concurrency limits within workflows to ensure that only a certain number of instances run simultaneously. `npm run worker:concurrency`
-3. **[Directed Acyclic Graph (DAG) Workflow](src/dag-worker.ts)**: Illustrates setting up workflows with dependencies that form a Directed Acyclic Graph, demonstrating the advanced orchestration capabilities of Hatchet. `npm run worker:dag`
-4. **[Manual Trigger Workflow](src/manual-trigger.ts)**: Explains how to initiate workflows manually, offering control over workflow execution triggers. `npm run worker:manual-trigger`
-5. **[Retries Workflow](./src/retries-worker.ts)**: Demonstrates handling retries scenarios within workflows, ensuring that failed or stalled processes are appropriately managed. `npm run worker:retries`
-
-To send an example event, open a new terminal and run the following command:
-
-```shell
-npm run example:event
-```
-
-#### Generative AI Workflows (Coming Soon)
-
-For more complex use cases, the project includes examples that integrate with OpenAI's API for generative tasks:
-
-1. **[Simple Response Generation]()**: A single-step workflow that makes a request to OpenAI, showcasing how to incorporate AI services into Hatchet workflows.
-2. **[Basic Retrieval Augmented Generation (BasicRag)]()**: A multi-step workflow that involves loading website content, reasoning about the information, and generating a response with OpenAI, demonstrating the potential for complex, AI-driven processes.
-
-<!-- ### Exposing the workflows via a RestAPI
-
-For a more complete example of how you might use Hatchet as part of a deployed production service, check out the [FastAPI Example](../fast-api-react/README.md) -->

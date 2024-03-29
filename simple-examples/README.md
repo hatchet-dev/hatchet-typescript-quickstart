@@ -1,6 +1,6 @@
 # Hatchet Simple Examples
 
-This is an example project demonstrating how to use Hatchet with Python.
+This is an example project demonstrating how to use Hatchet with Typescript.
 
 ## Prerequisites
 
