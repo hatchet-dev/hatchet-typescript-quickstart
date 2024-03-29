@@ -8,11 +8,6 @@ const hatchet = Hatchet.init({
   log_level: 'OFF',
 });
 
-const sleep = (ms: number) =>
-  new Promise((resolve) => {
-    setTimeout(resolve, ms);
-  });
-
 const planWork: Workflow = {
   id: 'plan-work',
   description: 'plan work for processing a set of documents',
