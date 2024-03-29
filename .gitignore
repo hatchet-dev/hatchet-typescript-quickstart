@@ -10,3 +10,5 @@ dist/
 build/
 
 .DS_Store
+
+index/index.json
