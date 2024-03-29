@@ -1,7 +1,9 @@
 import Hatchet, { Workflow } from '@hatchet-dev/typescript-sdk';
 import fs from 'fs';
 import path from 'path';
+import { addItem, query } from './db';
 
+// instantiate a new hatchet client
 const hatchet = Hatchet.init({
   log_level: 'OFF',
 });
@@ -76,7 +78,7 @@ const processPage: Workflow = {
       parents: ['load-page'],
       run: async (ctx) => {
         const { contents } = ctx.stepOutput('load-page')
-        const paragraphs = (contents as string).split('\n');
+        const paragraphs = (contents as string).split('\n\n');
 
         const children = paragraphs.map((paragraph) => ctx.spawnWorkflow<
         {
@@ -105,11 +107,29 @@ const processParagraph: Workflow = {
   steps: [
     {
       name: 'vectorize-paragraph',
+      retries: 3,
       run: async (ctx) => {
-        const { contents } = ctx.workflowInput()
-        console.log('executed step1!');
-        await sleep(5000);
-        return { result: 'step1' };
+        const { paragraph } = ctx.workflowInput()
+        const vector = await addItem(paragraph as string)
+        return { result: vector || [] };
+      },
+    },
+  ],
+};
+
+const search: Workflow = {
+  id: 'search-paragraphs',
+  description: 'find relevant paragraphs in the index',
+  on: {
+    event: 'paragraph:search',
+  },
+  steps: [
+    {
+      name: 'search-index',
+      run: async (ctx) => {
+        const { text } = ctx.workflowInput()
+        const results = await query(text as string)
+        return { results };
       },
     },
   ],
@@ -120,6 +140,7 @@ async function main() {
   await worker.registerWorkflow(planWork);
   await worker.registerWorkflow(processPage);
   await worker.registerWorkflow(processParagraph);
+  await worker.registerWorkflow(search);
   worker.start();
 }
 
