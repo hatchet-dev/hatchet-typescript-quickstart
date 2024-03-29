@@ -9,7 +9,7 @@ const hatchet = Hatchet.init({
 });
 
 const planWork: Workflow = {
-  id: 'plan-work',
+  id: 'process-plan-work',
   description: 'plan work for processing a set of documents',
   on: {
     event: 'document:create',
@@ -26,11 +26,7 @@ const planWork: Workflow = {
           return fs.statSync(path.join(documentsDir, file)).isFile();
         });
 
-        const children = documents.map((document) => ctx.spawnWorkflow<{
-          'chunk-page': {
-            'results': string
-          }
-        }>('process-page', {
+        const children = documents.map((document) => ctx.spawnWorkflow<ProcessPageOutput>(processPage.id, {
           path: path.join(documentsDir, document)
         }).result());
 
@@ -50,6 +46,12 @@ const planWork: Workflow = {
     },
   ],
 };
+
+interface ProcessPageOutput {
+  'chunk-page': {
+    'results': string
+  }
+}
 
 const processPage: Workflow = {
   id: 'process-page',
@@ -75,13 +77,7 @@ const processPage: Workflow = {
         const { contents } = ctx.stepOutput('load-page')
         const paragraphs = (contents as string).split('\n\n');
 
-        const children = paragraphs.map((paragraph) => ctx.spawnWorkflow<
-        {
-          'vectorize-paragraph': {
-            'result': string
-          }
-        }
-        >('process-paragraph', {
+        const children = paragraphs.map((paragraph) => ctx.spawnWorkflow<ProcessPageOutput>(processParagraph.id, {
           paragraph
         }).result());
 
@@ -92,6 +88,12 @@ const processPage: Workflow = {
     },
   ],
 };
+
+interface ProcessPageOutput {
+    'vectorize-paragraph': {
+      'result': string
+    }
+}
 
 const processParagraph: Workflow = {
   id: 'process-paragraph',
