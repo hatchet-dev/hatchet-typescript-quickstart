@@ -17,6 +17,7 @@
     "build": "tsc && resolve-tspaths",
     "exec": "npx dotenv -- ts-node -r tsconfig-paths/register --project tsconfig.json",
     "worker:fanout": "npm run exec -- src/fanout/fanout-worker.ts",
+    "worker:rate": "npm run exec -- src/rate-limit/rate-limit-worker.ts",
     "api": "npm run exec -- ./api.ts",
     "lint:check": "npm run eslint:check && npm run prettier:check",
     "lint:fix": "npm run eslint:fix && npm run prettier:fix",
@@ -58,7 +59,7 @@
     "typescript": "^5.4.3"
   },
   "dependencies": {
-    "@hatchet-dev/typescript-sdk": "^0.2.0",
+    "@hatchet-dev/typescript-sdk": "^0.4.0",
     "axios": "^1.6.8",
     "vectra": "^0.6.0"
   }
