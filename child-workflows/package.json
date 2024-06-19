@@ -61,6 +61,6 @@
     "@hatchet-dev/typescript-sdk": "^0.7.4",
     "axios": "^1.6.8",
     "openai": "^4.51.0",
-    "vectra": "^0.6.0"
+    "vectra": "^0.7.6"
   }
 }
