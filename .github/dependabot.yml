@@ -9,3 +9,8 @@ updates:
     directory: "/simple-examples"
     schedule:
       interval: "daily"
+
+  - package-ecosystem: "npm"
+    directory: "/child-workflows"
+    schedule:
+      interval: "daily"
