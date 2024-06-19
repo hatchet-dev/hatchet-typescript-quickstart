@@ -1,4 +1,6 @@
-http://:8080 {
+http://:80 {
+	tls internal
+
 	handle /api/* {
 		reverse_proxy hatchet-api:8080
 	}
