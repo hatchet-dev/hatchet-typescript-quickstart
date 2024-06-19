@@ -11,9 +11,15 @@ jobs:
         with:
           cache: npm
           cache-dependency-path: simple-examples/package.json
-      - name: Install dependencies
+      - name: Simple – Install dependencies
         working-directory: simple-examples
         run: npm ci
-      - name: Build
+      - name: Simple – Build
         working-directory: simple-examples
+        run: npm run lint:check
+      - name: Child Workflows – Install dependencies
+        working-directory: child-workflows
+        run: npm ci
+      - name: Child Workflows – Build
+        working-directory: child-workflows
         run: npm run lint:check

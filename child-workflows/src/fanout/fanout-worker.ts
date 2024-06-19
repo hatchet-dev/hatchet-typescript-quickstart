@@ -22,19 +22,23 @@ const planWork: Workflow = {
         // for each document, create a new event
         const documentsDir = path.join(__dirname, 'files');
 
-        const documents = fs.readdirSync(documentsDir).filter(file => {
+        const documents = fs.readdirSync(documentsDir).filter((file) => {
           return fs.statSync(path.join(documentsDir, file)).isFile();
         });
 
-        const children = documents.map((document) => ctx.spawnWorkflow<ProcessPageOutput>(processPage.id, {
-          path: path.join(documentsDir, document)
-        }).result());
+        const children = documents.map((document) =>
+          ctx
+            .spawnWorkflow<ProcessPageOutput>(processPage.id, {
+              path: path.join(documentsDir, document),
+            })
+            .result(),
+        );
 
-        const results = await Promise.all(children)
+        const results = await Promise.all(children);
 
         return {
           numDocuments: results.length,
-        }
+        };
       },
     },
     {
@@ -49,8 +53,8 @@ const planWork: Workflow = {
 
 interface ProcessPageOutput {
   'chunk-page': {
-    'results': string
-  }
+    results: string;
+  };
 }
 
 const processPage: Workflow = {
@@ -63,10 +67,10 @@ const processPage: Workflow = {
     {
       name: 'load-page',
       run: async (ctx) => {
-        const { path } = ctx.workflowInput()
+        const { path } = ctx.workflowInput();
         const contents = fs.readFileSync(path, 'utf-8');
         return {
-           contents
+          contents,
         };
       },
     },
@@ -74,25 +78,31 @@ const processPage: Workflow = {
       name: 'chunk-page',
       parents: ['load-page'],
       run: async (ctx) => {
-        const { contents } = ctx.stepOutput('load-page')
+        const { contents } = ctx.stepOutput('load-page');
         const paragraphs = (contents as string).split('\n\n');
 
-        const children = paragraphs.map((paragraph) => ctx.spawnWorkflow<ProcessPageOutput>(processParagraph.id, {
-          paragraph
-        }).result());
+        const children = paragraphs.map((paragraph) =>
+          ctx
+            .spawnWorkflow<ProcessPageOutput>(processParagraph.id, {
+              paragraph,
+            })
+            .result(),
+        );
 
-        const vectors = await Promise.all(children)
+        const vectors = await Promise.all(children);
 
-        return { results: vectors.map(v => v['vectorize-paragraph']['result']) };
+        return {
+          results: vectors.map((v) => v['vectorize-paragraph'].result),
+        };
       },
     },
   ],
 };
 
 interface ProcessPageOutput {
-    'vectorize-paragraph': {
-      'result': string
-    }
+  'vectorize-paragraph': {
+    result: string;
+  };
 }
 
 const processParagraph: Workflow = {
@@ -106,8 +116,8 @@ const processParagraph: Workflow = {
       name: 'vectorize-paragraph',
       retries: 3,
       run: async (ctx) => {
-        const { paragraph } = ctx.workflowInput()
-        const vector = await addItem(paragraph as string)
+        const { paragraph } = ctx.workflowInput();
+        const vector = await addItem(paragraph as string);
         return { result: vector || [] };
       },
     },
@@ -124,8 +134,8 @@ const search: Workflow = {
     {
       name: 'search-index',
       run: async (ctx) => {
-        const { text } = ctx.workflowInput()
-        const results = await query(text as string)
+        const { text } = ctx.workflowInput();
+        const results = await query(text as string);
         return { results };
       },
     },

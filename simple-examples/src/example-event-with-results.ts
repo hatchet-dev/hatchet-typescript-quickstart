@@ -7,10 +7,8 @@ async function main() {
     test: 'test',
   });
 
-  const listener = hatchet.listener.stream(workflowRunId);
-
   console.log('listening for events');
-  for await (const event of listener) {
+  for await (const event of await hatchet.listener.stream(workflowRunId)) {
     console.log('event received', event);
   }
   console.log('done listening for events');
