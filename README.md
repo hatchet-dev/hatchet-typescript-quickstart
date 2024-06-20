@@ -43,4 +43,4 @@ You will need this in the examples.
 
 [Simple Examples](/simple-examples): stand-alone workers showing off core functionality of hatchet
 
-To get started, navigate to the respective example directories for further README instructions and refer to the [Documentation](https://docs.hatchet.run/home/typescript-sdk/setup)
+To get started, navigate to the respective example directories for further README instructions and refer to the [Documentation](https://docs.hatchet.run/sdks/typescript-sdk)
