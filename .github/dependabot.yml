@@ -5,6 +5,16 @@ updates:
     schedule:
       interval: "daily"
 
+  - package-ecosystem: "docker"
+    directory: ".github/docker"
+    schedule:
+      interval: "daily"
+    groups:
+      docker:
+        applies-to: version-updates
+        patterns:
+          - "*hatchet-*"
+
   - package-ecosystem: "npm"
     directory: "/simple-examples"
     schedule:
