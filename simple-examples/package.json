@@ -62,7 +62,7 @@
     "ts-proto": "^1.174.0",
     "typedoc": "^0.26.2",
     "typedoc-plugin-markdown": "^4.1.1",
-    "typescript": "^5.5.2"
+    "typescript": "^5.5.3"
   },
   "dependencies": {
     "@hatchet-dev/typescript-sdk": "^0.10.0"
