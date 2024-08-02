@@ -52,7 +52,7 @@
     "resolve-tspaths": "^0.8.19",
     "ts-jest": "^29.2.4",
     "ts-node": "^10.9.2",
-    "ts-proto": "^1.169.1",
+    "ts-proto": "^1.181.1",
     "typedoc": "^0.26.5",
     "typedoc-plugin-markdown": "^4.2.3",
     "typescript": "^5.4.3"
