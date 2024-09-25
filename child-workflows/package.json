@@ -58,7 +58,7 @@
     "typescript": "^5.4.3"
   },
   "dependencies": {
-    "@hatchet-dev/typescript-sdk": "^0.8.1",
+    "@hatchet-dev/typescript-sdk": "^0.13.1",
     "axios": "^1.7.3",
     "openai": "^4.55.1",
     "vectra": "^0.7.6"
