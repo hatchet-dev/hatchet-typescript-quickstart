@@ -65,6 +65,6 @@
     "typescript": "^5.5.4"
   },
   "dependencies": {
-    "@hatchet-dev/typescript-sdk": "^0.10.0"
+    "@hatchet-dev/typescript-sdk": "^0.15.0"
   }
 }
