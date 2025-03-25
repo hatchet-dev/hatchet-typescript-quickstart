@@ -1,4 +1,4 @@
-import { simple } from './tasks/first-task';
+import { simple } from './workflows/first-workflow';
 
 async function main() {
   const res = await simple.run({
