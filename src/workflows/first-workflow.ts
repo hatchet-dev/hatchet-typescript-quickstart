@@ -11,7 +11,7 @@ type SimpleOutput = {
 }; 
 
 export const simple = hatchet.workflow<SimpleInput, SimpleOutput>({
-  name: 'simple',
+  name: 'first-workflow',
 });
 
 simple.task({
