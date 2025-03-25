@@ -1,5 +1,5 @@
 import { hatchet } from './hatchet-client';
-import { simple } from './workflows/first-workflow';
+import { simple } from './tasks/first-task';
 
 async function main() {
   const worker = await hatchet.worker('simple-worker', {

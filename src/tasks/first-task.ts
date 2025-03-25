@@ -1,21 +1,17 @@
 import { hatchet } from '../hatchet-client';
 
+// Input and output types are Optional 
+// but helpful if shared between services
 type SimpleInput = {
   Message: string;
 };
 
 type SimpleOutput = {
-  'to-lower': {
     TransformedMessage: string;
-  };
 }; 
 
-export const simple = hatchet.workflow<SimpleInput, SimpleOutput>({
+export const simple = hatchet.task<SimpleInput, SimpleOutput>({
   name: 'first-workflow',
-});
-
-simple.task({
-  name: 'to-lower',
   fn: (input) => {
     return {
       TransformedMessage: input.Message.toLowerCase(),
