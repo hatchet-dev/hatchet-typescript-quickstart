@@ -17,28 +17,24 @@ Before running this project, make sure you have the following:
 HATCHET_CLIENT_TLS_STRATEGY=none
 ```
 
-2. Open a terminal and navigate to the project root directory (`/simple-examples`):
+2. Run the following command to install the project dependencies:
 
    ```shell
-   cd simple-examples
-   ```
-
-3. Run the following command to install the project dependencies:
-
-   ```shell
-   npm i
+   npm install
    ```
 
 ### Running an example
 
-First, start a Hatchet worker by running the following command:
+1. Start a Hatchet worker by running the following command:
 
 ```shell
 npm run start
 ```
 
-To send an example event, open a new terminal and run the following command:
+2. To run the example workflow, open a new terminal and run the following command:
 
 ```shell
 npm run run:simple
 ```
+
+This will trigger the workflow on the worker running in the first terminal and print the output to the the second terminal.
