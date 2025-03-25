@@ -16,11 +16,7 @@ updates:
           - "*hatchet-*"
 
   - package-ecosystem: "npm"
-    directory: "/simple-examples"
+    directory: "/"
     schedule:
       interval: "daily"
 
-  - package-ecosystem: "npm"
-    directory: "/child-workflows"
-    schedule:
-      interval: "daily"

@@ -1,46 +1,83 @@
-## Hatchet Typescript Quickstart
+# Hatchet Simple Examples
 
-The following is a template repo to get started with the Hatchet Typescript SDK. It includes instructions for getting started with Hatchet cloud along with a locally running instance of Hatchet.
+This is an example project demonstrating how to use Hatchet with Typescript.
 
-### Cloud Version
 
-Navigate to your settings tab in the Hatchet dashboard. You should see a section called "API Keys". Click "Create API Key", input a name for the key and copy the key. Then copy the environment variable:
+## Prerequisites
 
-```
-HATCHET_CLIENT_TOKEN="<token>"
-```
+Before running this project, make sure you have the following:
 
-You will need this in the examples.
+1. [Node V16 or higher](https://nodejs.org/en/download)
 
-**Next steps:** see [Running Workflows](#running-workflows) to trigger your first Hatchet workflow.
+## Setup
 
-### Local Version
-
-Run the following command to start the Hatchet instance:
+1. Create a `.env` file in the root directory and set the required environment variables. This requires the `HATCHET_CLIENT_TOKEN` variable created in the [Getting Started README](https://docs.hatchet.run/quickstart).
 
 ```
-docker compose up
+HATCHET_CLIENT_TLS_STRATEGY=none
 ```
 
-This will start a Hatchet instance on port `8080`. You should be able to navigate to [localhost:8080](localhost:8080) and use the following credentials to log in:
+2. Open a terminal and navigate to the project root directory (`/simple-examples`):
 
+   ```shell
+   cd simple-examples
+   ```
+
+3. Run the following command to install the project dependencies:
+
+   ```shell
+   npm i
+   ```
+
+### Running an example
+
+First, start a Hatchet worker by running the following command:
+
+```shell
+npm run worker:start
 ```
-Email: admin@example.com
-Password: Admin123!!
+
+To send an example event, open a new terminal and run the following command:
+
+```shell
+npm run example:event
 ```
 
-Next, navigate to your settings tab in the Hatchet dashboard. You should see a section called "API Keys". Click "Create API Key", input a name for the key and copy the key. Then copy the environment variable:
+Check [all example workflows](#all-simple-workflows) below.
 
+## Triggering a workflow
+
+Follow the instructions in the root [project setup](../README.md) to launch the playground and start workflow runs.
+
+## Project Overview
+
+### Example Workflows
+
+The project contains example workflows in the [`./src`](./src) directory. See `./package.json` for available scripts to run workers.
+
+#### All Simple Workflows
+
+The project includes a variety of basic workflows to demonstrate Hatchet's core capabilities, each showcasing different features:
+
+1. **[Simple Workflow](src/simple-worker.ts)**: Demonstrates a straightforward process flow, showcasing the basics of setting up a workflow in Hatchet. `npm run worker:simple`
+2. **[Concurrency Limit Workflow](./src/concurrency/concurrency-worker.ts)**: Shows how to manage concurrency limits within workflows to ensure that only a certain number of instances run simultaneously. `npm run worker:concurrency`
+3. **[Directed Acyclic Graph (DAG) Workflow](src/dag-worker.ts)**: Illustrates setting up workflows with dependencies that form a Directed Acyclic Graph, demonstrating the advanced orchestration capabilities of Hatchet. `npm run worker:dag`
+4. **[Manual Trigger Workflow](src/manual-trigger.ts)**: Explains how to initiate workflows manually, offering control over workflow execution triggers. `npm run worker:manual-trigger`
+5. **[Retries Workflow](./src/retries-worker.ts)**: Demonstrates handling retries scenarios within workflows, ensuring that failed or stalled processes are appropriately managed. `npm run worker:retries`
+
+To send an example event, open a new terminal and run the following command:
+
+```shell
+npm run example:event
 ```
-HATCHET_CLIENT_TOKEN="<token>"
-```
 
-You will need this in the examples.
+#### Generative AI Workflows (Coming Soon)
 
-**Next steps:** see [Running Workflows](#running-workflows) to trigger your first Hatchet workflow.
+For more complex use cases, the project includes examples that integrate with OpenAI's API for generative tasks:
 
-## Running Workflows
+1. **[Simple Response Generation]()**: A single-step workflow that makes a request to OpenAI, showcasing how to incorporate AI services into Hatchet workflows.
+2. **[Basic Retrieval Augmented Generation (BasicRag)]()**: A multi-step workflow that involves loading website content, reasoning about the information, and generating a response with OpenAI, demonstrating the potential for complex, AI-driven processes.
 
-[Simple Examples](/simple-examples): stand-alone workers showing off core functionality of hatchet
+<!-- ### Exposing the workflows via a RestAPI
 
-To get started, navigate to the respective example directories for further README instructions and refer to the [Documentation](https://docs.hatchet.run/sdks/typescript-sdk)
+For a more complete example of how you might use Hatchet as part of a deployed production service, check out the [FastAPI Example](../fast-api-react/README.md) -->
