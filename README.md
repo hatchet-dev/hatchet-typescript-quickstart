@@ -11,10 +11,10 @@ Before running this project, make sure you have the following:
 
 ## Setup
 
-1. Create a `.env` file in the root directory and set the required environment variables. This requires the `HATCHET_CLIENT_TOKEN` variable created in the [Getting Started Guide](https://docs.hatchet.run/home/hatchet-cloud-quickstart).
+1. Set the required environment variable `HATCHET_CLIENT_TOKEN` created in the [Getting Started Guide](https://docs.hatchet.run/home/hatchet-cloud-quickstart).
 
 ```
-HATCHET_CLIENT_TLS_STRATEGY=none
+export HATCHET_CLIENT_TOKEN=<token>
 ```
 
 2. Run the following command to install the project dependencies:
