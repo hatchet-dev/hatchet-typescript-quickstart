@@ -15,6 +15,6 @@
     "typescript": "^5.8.2"
   },
   "dependencies": {
-    "@hatchet-dev/typescript-sdk": "1.0.0"
+    "@hatchet-dev/typescript-sdk": "1.1.2"
   }
 }
