@@ -1,7 +1,19 @@
 import { hatchet } from '../hatchet-client';
 
+type Input = {
+  message: string;
+};
 
-export const simple = hatchet.workflow({
+type Output = {
+  "first-task": {
+    message: string;
+  };
+  "second-task": {
+    message: string;
+  };
+};
+
+export const simple = hatchet.workflow<Input, Output>({
   name: 'first-workflow',
 });
 

@@ -2,11 +2,11 @@ import { simple } from './workflows/first-workflow';
 
 async function main() {
   const res = await simple.run({
-    Message: 'hello',
+    message: 'hello',
   });
 
-  // eslint-disable-next-line no-console
-  console.log(res['to-lower'].TransformedMessage);
+  console.log(res['first-task'].message);
+  console.log(res['second-task'].message);
 }
 
 if (require.main === module) {
