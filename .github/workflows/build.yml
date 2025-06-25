@@ -10,12 +10,12 @@ jobs:
         uses: actions/setup-node@v4
         with:
           cache: npm
-          cache-dependency-path: simple-examples/package.json
+          cache-dependency-path: monorepo/package.json
       - name: Simple – Install dependencies
-        working-directory: simple-examples
+        working-directory: monorepo
         run: npm ci
       - name: Simple – Build
-        working-directory: simple-examples
+        working-directory: monorepo
         run: npm run build
       - name: Child Workflows – Install dependencies
         working-directory: child-workflows
