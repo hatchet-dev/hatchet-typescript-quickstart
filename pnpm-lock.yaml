@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@hatchet-dev/typescript-sdk':
-        specifier: ^1.9.7
-        version: 1.9.7
+        specifier: ^1.9.8
+        version: 1.9.8
     devDependencies:
       '@types/node':
         specifier: ^22.15.3
@@ -21,8 +21,8 @@ importers:
 
 packages:
 
-  '@bufbuild/protobuf@2.8.0':
-    resolution: {integrity: sha512-r1/0w5C9dkbcdjyxY8ZHsC5AOWg4Pnzhm2zu7LO4UHSounp2tMm6Y+oioV9zlGbLveE7YaWRDUk48WLxRDgoqg==}
+  '@bufbuild/protobuf@2.9.0':
+    resolution: {integrity: sha512-rnJenoStJ8nvmt9Gzye8nkYd6V22xUAnu4086ER7h1zJ508vStko4pMvDeQ446ilDTFpV5wnoc5YS7XvMwwMqA==}
 
   '@grpc/grpc-js@1.14.0':
     resolution: {integrity: sha512-N8Jx6PaYzcTRNzirReJCtADVoq4z7+1KQ4E70jTg/koQiMoUSN1kbNjPOqpPbhMFhfU1/l7ixspPl8dNY+FoUg==}
@@ -33,8 +33,8 @@ packages:
     engines: {node: '>=6'}
     hasBin: true
 
-  '@hatchet-dev/typescript-sdk@1.9.7':
-    resolution: {integrity: sha512-o5jmJgJFDImQUtilQwzGkD3olrEpsXqRUAKvfv0/sUdUUxT/pkaOPDIEILHrZJmhP357j/rd6jsYs2JiefO4dg==}
+  '@hatchet-dev/typescript-sdk@1.9.8':
+    resolution: {integrity: sha512-Kx6EX6C0CnPQuveBtnLgfB39vWuja9+TrkIttc/PI59o5YMg0h7T+wC12t2Bj3aiuueA9egF3JiczHOpP74gHA==}
 
   '@js-sdsl/ordered-map@4.4.2':
     resolution: {integrity: sha512-iUKgm52T8HOE/makSxjqoWhe95ZJA1/G1sYsGev2JDKUSS14KAgg1LHb+Ba+IPow0xflbnSkOsZcO08C7w1gYw==}
@@ -215,8 +215,8 @@ packages:
   nice-grpc-common@2.0.2:
     resolution: {integrity: sha512-7RNWbls5kAL1QVUOXvBsv1uO0wPQK3lHv+cY1gwkTzirnG1Nop4cBJZubpgziNbaVc/bl9QJcyvsf/NQxa3rjQ==}
 
-  nice-grpc@2.1.12:
-    resolution: {integrity: sha512-J1n4Wg+D3IhRhGQb+iqh2OpiM0GzTve/kf2lnlW4S+xczmIEd0aHUDV1OsJ5a3q8GSTqJf+s4Rgg1M8uJltarw==}
+  nice-grpc@2.1.13:
+    resolution: {integrity: sha512-IkXNok2NFyYh0WKp1aJFwFV3Ue2frBkJ16ojrmgX3Tc9n0g7r0VU+ur3H/leDHPPGsEeVozdMynGxYT30k3D/Q==}
 
   object-inspect@1.13.4:
     resolution: {integrity: sha512-W67iLl4J2EXEGTbfeHCffrjDfitvLANg0UlX3wFUUSTx92KXRFegMHUVgSqE+wvhAbi4WqjGg9czysTV2Epbew==}
@@ -303,7 +303,7 @@ packages:
 
 snapshots:
 
-  '@bufbuild/protobuf@2.8.0': {}
+  '@bufbuild/protobuf@2.9.0': {}
 
   '@grpc/grpc-js@1.14.0':
     dependencies:
@@ -317,14 +317,14 @@ snapshots:
       protobufjs: 7.5.4
       yargs: 17.7.2
 
-  '@hatchet-dev/typescript-sdk@1.9.7':
+  '@hatchet-dev/typescript-sdk@1.9.8':
     dependencies:
-      '@bufbuild/protobuf': 2.8.0
+      '@bufbuild/protobuf': 2.9.0
       '@types/qs': 6.14.0
       abort-controller-x: 0.4.3
       axios: 1.12.2
       long: 5.3.2
-      nice-grpc: 2.1.12
+      nice-grpc: 2.1.13
       nice-grpc-common: 2.0.2
       protobufjs: 7.5.4
       qs: 6.14.0
@@ -498,7 +498,7 @@ snapshots:
     dependencies:
       ts-error: 1.0.6
 
-  nice-grpc@2.1.12:
+  nice-grpc@2.1.13:
     dependencies:
       '@grpc/grpc-js': 1.14.0
       abort-controller-x: 0.4.3
