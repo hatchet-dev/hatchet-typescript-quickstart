@@ -1,1 +1,1 @@
-FROM ghcr.io/hatchet-dev/hatchet/hatchet-frontend:v0.83.26
+FROM ghcr.io/hatchet-dev/hatchet/hatchet-frontend:v0.83.27
